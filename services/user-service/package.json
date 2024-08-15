@@ -2,11 +2,11 @@
   "name": "@e-wallet-backend/user-service",
   "version": "1.0.0",
   "description": "Backend User Service for E-Wallet application",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
-    "start": "ts-node dist/server.js",
     "build": "tsc",
-    "dev": "nodemon index.js",
+    "start": "node dist/server.js",
+    "dev": "ts-node src/server.ts",
     "test": "jest"
   },
   "dependencies": {
@@ -21,6 +21,8 @@
     "@types/express": "^4.17.21",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^22.3.0",
+    "nodemon": "^2.0.22",
+    "ts-node": "^10.9.1",
     "typescript": "^5.5.4"
   }
 }
