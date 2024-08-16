@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+ user-service:
+ build: tsc
+ context: ./user-service
+ ports:
+ - "3001:3000"
+ depends_on:
+ - mongodb
+ networks:
+ - mynetwork
+
+ stripe-service:
+  build: tsc
+  context: ./service2
+  ports:
+    - "3003:3002"
+  depends_on:
+    - mongodb
+  networks:
+    - mynetwork
+
+ wallet-service:
+  build: tsc
+  context: ./service2
+  ports:
+    - "3005:3004"
+  depends_on:
+    - mongodb
+  networks:
+    - mynetwork
+
+mongodb:
+  image: mongo:latest
+  ports:
+    - "27017:27017"
+  volumes:
+    - mongo-data:/data/db
+  networks:
+    - mynetwork
+
+networks:
+ mynetwork:
+
+volumes:
+ mongo-data:

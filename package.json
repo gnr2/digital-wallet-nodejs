@@ -4,7 +4,7 @@
   "description": "Backend for E-Wallet application",
   "main": "server.js",
   "workspaces": [
-    "./packages/*"
+    "./services/*"
   ],
   "scripts": {
     "start": "node server.js",

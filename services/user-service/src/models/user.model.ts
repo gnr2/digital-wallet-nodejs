@@ -1,13 +1,9 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 import bcrypt from 'bcryptjs';
+import { IUser, IWallet } from '../interfaces/user.interface';
 
 // Define the wallet schema
-interface Wallet {
-  balance: number;
-  stripeCustomerId: string;
-}
-
-const walletSchema = new Schema<Wallet>({
+const walletSchema = new Schema<IWallet>({
   balance: {
     type: Number,
     default: 0,
@@ -19,16 +15,6 @@ const walletSchema = new Schema<Wallet>({
   }
 }, { _id: false }); // Disable _id for subdocument
 
-// Define the user interface extending mongoose.Document
-export interface IUser extends Document {
-  email: string;
-  password: string;
-  firstName: string;
-  lastName: string;
-  wallet: Wallet;
-  createdAt: Date;
-  checkPassword(candidatePassword: string): Promise<boolean>;
-}
 
 const userSchema = new Schema<IUser>({
   email: {

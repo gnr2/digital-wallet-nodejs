@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import authRoutes from './auth.routes';
+import userRoutes from './user.route';
 // import walletRoutes from './wallet.routes';
 // import stripeRoutes from './stripe.routes';
 
@@ -8,6 +9,7 @@ const router = Router();
 
 // Use the routes for different paths
 router.use('/auth', authRoutes);
+router.use('/user', userRoutes)
 // router.use('/wallet', walletRoutes);
 // router.use('/stripe', stripeRoutes);
 
